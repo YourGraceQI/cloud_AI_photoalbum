@@ -20,7 +20,7 @@ def lambda_handler(event, context):
     print(return_message)
     return {
         'body':{
-                'text':return_message,
+                'text':'test for code pipeline',
                 'timestamp': '20201210'
                 }
             }
