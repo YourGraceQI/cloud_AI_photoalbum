@@ -5,6 +5,7 @@ phases:
         python: 3.8
   build:
     commands:
+      - sam build
       - sam package --s3-bucket testpipelinegithubqm --output-template-file packaged-template.yml
 artifacts:
   files:
