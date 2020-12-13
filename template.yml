@@ -48,27 +48,27 @@ Resources:
       Environment:
         Variables:
           REGION: us-east-1
-  # Indexlf:
-  #   Type: 'AWS::Serverless::Function'
-  #   Properties:
-  #     Handler: search_photos.lambda_handler
-  #     Runtime: python3.8
-  #     FunctionName: Indexlf
-  #     CodeUri: ./src/index_photos
-  #     MemorySize: 128
-  #     Timeout: 3
-  #     Role: 'arn:aws:iam::840723909099:role/service-role/photoIndex-role-sz2l5aln'
-  #     Policies:
-  #       - AWSLambdaBasicExecutionRole-a49340ea-df22-4378-ad40-0127997c95f2
-  #       - AmazonS3FullAccess
-  #     Environment:
-  #       Variables:
-  #         REGION: us-east-1
-  #   Metadata:
-  #     'AWS::CloudFormation::Designer':
-  #       id: e2f229a0-3a9e-4189-8001-8abba8f64885
-  #   DependsOn:
-  #     - ED4G9IJ
+  Indexlf:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      Handler: index_photos.lambda_handler
+      Runtime: python3.8
+      FunctionName: Indexlf
+      CodeUri: ./src/index_photos
+      MemorySize: 128
+      Timeout: 3
+      Role: 'arn:aws:iam::840723909099:role/service-role/photoIndex-role-sz2l5aln'
+      Policies:
+        - AWSLambdaBasicExecutionRole-a49340ea-df22-4378-ad40-0127997c95f2
+        - AmazonS3FullAccess
+      Environment:
+        Variables:
+          REGION: us-east-1
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: e2f229a0-3a9e-4189-8001-8abba8f64885
+    DependsOn:
+      - ED4G9IJ
   # ED4G9IJ:
   #   Type: 'AWS::Elasticsearch::Domain'
   #   Metadata:
