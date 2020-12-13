@@ -7,5 +7,5 @@ Resources:
   Properties:
    Handler: front2lex.lambda_handler
    Runtime: python3.8
-   FunctionName: SamplePython
-   CodeUri: ./src #Directory the source file is
+   FunctionName: SampleFunction
+   CodeUri: ./lambda/front_lex.py #Directory the source file is
