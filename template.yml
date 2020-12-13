@@ -2,10 +2,10 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Python file including external library
 Resources:
-  photo:
+  cloudhw3photobucket:
     Type: 'AWS::S3::Bucket'
     Properties:
-      BucketName: photo
+      BucketName: cloudhw3photobucket
       AccessControl: PublicRead
       CorsConfiguration:
         CorsRules:
@@ -82,7 +82,7 @@ Resources:
           Type: S3
           Properties:
             Bucket:
-              Ref: photo
+              Ref: cloudhw3photobucket
             Events: 's3:ObjectCreated:Put'
       Environment:
         Variables:
