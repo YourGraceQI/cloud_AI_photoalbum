@@ -9,6 +9,7 @@ phases:
       - sam package --s3-bucket testpipelinegithubqm --output-template-file outputtemplate.yml
 artifacts:
   files:
+    - requirements.txt
     - template.yml
     - outputtemplate.yml
 
