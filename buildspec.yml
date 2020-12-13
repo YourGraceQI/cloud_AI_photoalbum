@@ -5,9 +5,9 @@ phases:
         python: 3.8
   build:
     commands:
-      - sam build
-      - sam package --s3-bucket testpipelinegithubqm --output-template-file outputemplate.yml
+      - aws cloudformation package --template-file template.yml --s3-bucket testpipelinegithubqm --output-template-file outputemplate.yml
 artifacts:
-  type: zip
   files:
+    - template.yml
     - outputtemplate.yml
+
