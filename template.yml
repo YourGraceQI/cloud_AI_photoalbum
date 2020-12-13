@@ -101,28 +101,28 @@ Resources:
     # Metadata:
     #   'AWS::CloudFormation::Designer':
     #     id: 89c42226-fd68-42e3-93df-1513b1ce6558
-  myES:
-    Type: 'AWS::Elasticsearch::Domain'
-    Properties:
-        DomainName: "myES"
-        ElasticsearchClusterConfig:
-          DedicatedMasterEnabled: "false"
-          InstanceCount: "1"
-          InstanceType: "t2.small.elasticsearch"
-        EBSOptions:
-          EBSEnabled: true
-          Iops: 0
-          VolumeSize: 20
-          VolumeType: "gp2"
-        AccessPolicies:
-          Version: "2012-10-17"
-          Statement:
-            -
-              Effect: "Allow"
-              Principal:
-                AWS: "arn:aws:iam::840723909099:user/Diana"
-              Action: "es:*"
-              Resource: "arn:aws:es:us-east-1:840723909099:domain/testpip-ed4g9i-10k5rxz0gke5n"
+  # myES:
+  #   Type: 'AWS::Elasticsearch::Domain'
+  #   Properties:
+  #       DomainName: "myES"
+  #       ElasticsearchClusterConfig:
+  #         DedicatedMasterEnabled: "false"
+  #         InstanceCount: "1"
+  #         InstanceType: "t2.small.elasticsearch"
+  #       EBSOptions:
+  #         EBSEnabled: true
+  #         Iops: 0
+  #         VolumeSize: 20
+  #         VolumeType: "gp2"
+  #       AccessPolicies:
+  #         Version: "2012-10-17"
+  #         Statement:
+  #           -
+  #             Effect: "Allow"
+  #             Principal:
+  #               AWS: "arn:aws:iam::840723909099:user/Diana"
+  #             Action: "es:*"
+  #             Resource: "arn:aws:es:us-east-1:840723909099:domain/testpip-ed4g9i-10k5rxz0gke5n"
   # S3BN9ZR:
   #   Type: 'AWS::S3::Bucket'
   #   Properties: {}
