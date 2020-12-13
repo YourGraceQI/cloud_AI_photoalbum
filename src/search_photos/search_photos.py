@@ -169,15 +169,36 @@ def search_intent(intent_request):
     print(keyword_2)
     print('start searching')
     
+    #must contain two lables
+    # if keyword_2 is not None:
+    #     query ={
+    #         "query":{
+    #             "bool":{
+    #                 "must":[
+    #                     {"term": {"labels": keyword_1}},
+    #                     {"term": {"labels": keyword_2}}]
+    #                     }
+    #                 },
+    #     "size": 1000 #number of rows you want to get in the result
+    #             }
+    # else:
+    #     query ={
+    #         "query":{
+    #             "match": {
+    #                 "labels" : keyword_1
+    #                 }
+    #             },
+    #     "size": 1000 #number of rows you want to get in the result
+    # }
+    
+    #contain one of the labels is okay
     if keyword_2 is not None:
         query ={
             "query":{
-                "bool":{
-                    "must":[
-                        {"term": {"labels": keyword_1}},
-                        {"term": {"labels": keyword_2}}]
-                        }
-                    },
+                "terms": {
+                    "labels" : [keyword_1, keyword_2]
+                    }
+                },
         "size": 1000 #number of rows you want to get in the result
                 }
     else:
@@ -189,6 +210,7 @@ def search_intent(intent_request):
                 },
         "size": 1000 #number of rows you want to get in the result
     }
+    
     
     r = requests.get(url, auth=awsauth, json=query, headers=headers)
 
