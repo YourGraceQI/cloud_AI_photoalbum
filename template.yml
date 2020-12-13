@@ -5,7 +5,7 @@ Resources:
   A3lf2ApiGateway:
     Type: 'AWS::Serverless::Api'
     Properties:
-      StageName: cf_1
+      StageName: vs
       OpenApiVersion: "2.0"
       DefinitionUri: search_api_export.yaml
   Frontlexlf:
