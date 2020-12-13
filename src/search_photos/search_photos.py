@@ -138,14 +138,14 @@ def search_intent(intent_request):
         # Use the elicitSlot dialog action to re-prompt for the first violation detected.
         slots = get_slots(intent_request)
 
-        validation_result = validate_searchkey(keyword_1,keyword_2)
-        if not validation_result['isValid']:
-            slots[validation_result['violatedSlot']] = None
-            return elicit_slot(intent_request['sessionAttributes'],
-                               intent_request['currentIntent']['name'],
-                               slots,
-                               validation_result['violatedSlot'],
-                               validation_result['message'])
+        # validation_result = validate_searchkey(keyword_1,keyword_2)
+        # if not validation_result['isValid']:
+        #     slots[validation_result['violatedSlot']] = None
+        #     return elicit_slot(intent_request['sessionAttributes'],
+        #                       intent_request['currentIntent']['name'],
+        #                       slots,
+        #                       validation_result['violatedSlot'],
+                            #   validation_result['message'])
 
         # Pass the price of the flowers back through session attributes to be used in various prompts defined
         # on the bot model.
