@@ -94,5 +94,5 @@ Resources:
       'AWS::CloudFormation::Designer':
         id: 7f9d2521-d19a-4412-bb2b-c1193420bdb6
     DependsOn:
-      - MyAPI
+      - A3lf2ApiGateway
   
