@@ -1,3 +1,5 @@
 *.pdf
 simple.json
 sampletemplate.yml
+.DS_Store
+.vscode
