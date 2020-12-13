@@ -2,17 +2,22 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Python file including external library
 Resources:
-  photo:
+  photobucket:
     Type: 'AWS::S3::Bucket'
     Properties:
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: false
-        BlockPublicPolicy: false
-        IgnorePublicAcls: false
-        RestrictPublicBuckets: false
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: d939f2ee-9476-451a-a0a6-9aa7872b1947
+      BucketName: photobucket
+      AccessControl: PublicRead
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - '*'
+            AllowedMethods:
+              - GET
+            AllowedOrigins:
+              - '*'
+            ExposedHeaders:
+              - Date
+            Id: myCORSRuleId1
   A3lf2ApiGateway:
     Type: 'AWS::Serverless::Api'
     Properties:
@@ -77,7 +82,7 @@ Resources:
           Type: S3
           Properties:
             Bucket:
-              Ref: photo-storages
+              Ref: photo
             Events: 's3:ObjectCreated:Put'
       Environment:
         Variables:
