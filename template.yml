@@ -69,30 +69,30 @@ Resources:
         id: e2f229a0-3a9e-4189-8001-8abba8f64885
     DependsOn:
       - ED4G9IJ
-  # ED4G9IJ:
-  #   Type: 'AWS::Elasticsearch::Domain'
-  #   Metadata:
-  #     'AWS::CloudFormation::Designer':
-  #       id: 89c42226-fd68-42e3-93df-1513b1ce6558
-  # photo:
-  #   Type: 'AWS::S3::Bucket'
-  #   Properties:
-  #     PublicAccessBlockConfiguration:
-  #       BlockPublicAcls: false
-  #       BlockPublicPolicy: false
-  #       IgnorePublicAcls: false
-  #       RestrictPublicBuckets: false
-  #   Metadata:
-  #     'AWS::CloudFormation::Designer':
-  #       id: d939f2ee-9476-451a-a0a6-9aa7872b1947
-  #   DependsOn:
-  #     - Indexlf
-  # S3BN9ZR:
-  #   Type: 'AWS::S3::Bucket'
-  #   Properties: {}
-  #   Metadata:
-  #     'AWS::CloudFormation::Designer':
-  #       id: 7f9d2521-d19a-4412-bb2b-c1193420bdb6
-  #   DependsOn:
-  #     - MyAPI
+  ED4G9IJ:
+    Type: 'AWS::Elasticsearch::Domain'
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 89c42226-fd68-42e3-93df-1513b1ce6558
+  photo:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: d939f2ee-9476-451a-a0a6-9aa7872b1947
+    DependsOn:
+      - Indexlf
+  S3BN9ZR:
+    Type: 'AWS::S3::Bucket'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 7f9d2521-d19a-4412-bb2b-c1193420bdb6
+    DependsOn:
+      - MyAPI
   
