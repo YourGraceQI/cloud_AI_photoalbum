@@ -1,7 +1,5 @@
 import json
 import boto3
-
-# for  test
     
 def lambda_handler(event, context):
     # TODO implement
@@ -22,7 +20,7 @@ def lambda_handler(event, context):
     print(return_message)
     return {
         'body':{
-                'text':'test for code pipeline',
+                'text': return_message,
                 'timestamp': '20201210'
                 }
             }
