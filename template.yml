@@ -8,4 +8,4 @@ Resources:
    Handler: front2lex.lambda_handler
    Runtime: python3.8
    FunctionName: SampleFunction
-   CodeUri: ./lambda/front_lex.py #Directory the source file is
+   CodeUri: ./front2lex.py #Directory the source file is
