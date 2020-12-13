@@ -9,3 +9,4 @@ Resources:
    Runtime: python3.8
    FunctionName: SampleFunction
    CodeUri: ./src/front2lex.py #Directory the source file is
+   Role: arn:aws:iam::840723909099:role/service-role/front_lex-role-odw9js2u
