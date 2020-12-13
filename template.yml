@@ -14,7 +14,7 @@ Resources:
       Handler: front2lex.lambda_handler
       Runtime: python3.8
       FunctionName: Frontlexlf
-      CodeUri: ./src/front2lex.py #Directory the source file is
+      CodeUri: ./src/front2lex #Directory the source file is
       MemorySize: 128
       Timeout: 30
       Role: arn:aws:iam::840723909099:role/service-role/front_lex-role-odw9js2u
@@ -39,7 +39,7 @@ Resources:
       Handler: search_photos.lambda_handler
       Runtime: python3.8
       FunctionName: Searchlf
-      CodeUri: ./src/search_photos.py #Directory the source file is
+      CodeUri: ./src/search_photos #Directory the source file is
       MemorySize: 128
       Timeout: 3
       Role: arn:aws:iam::840723909099:role/service-role/search-photos-role-1k677fab
