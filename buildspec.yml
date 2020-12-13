@@ -6,8 +6,8 @@ phases:
   build:
     commands:
       - sam build
-      - sam package --s3-bucket testpipelinegithubqm --output-template-file packaged-template.yml
+      - sam package --s3-bucket testpipelinegithubqm --output-template-file outputemplate.yml
 artifacts:
+  type: zip
   files:
-    - template.yml
-    - packaged-template.yml
+    - outputtemplate.yml
