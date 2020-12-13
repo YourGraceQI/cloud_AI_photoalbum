@@ -61,19 +61,30 @@ Resources:
       Policies:
         - AWSLambdaBasicExecutionRole-a49340ea-df22-4378-ad40-0127997c95f2
         - AmazonS3FullAccess
+      Events:
+        UploadS3:
+          Type: S3
+          Properties:
+            Bucket:
+              Ref: photo
+            Events: 's3:ObjectCreated:Put'
       Environment:
         Variables:
           REGION: us-east-1
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: e2f229a0-3a9e-4189-8001-8abba8f64885
-    DependsOn:
-      - ED4G9IJ
-  ED4G9IJ:
-    Type: 'AWS::Elasticsearch::Domain'
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: 89c42226-fd68-42e3-93df-1513b1ce6558
+  # ED4G9IJ:
+  #   Type: 'AWS::Elasticsearch::Domain'
+  #   AccessPolicies: Json
+  #     Version: "2012-10-17"
+  #     Statement:
+  #       -
+  #         Effect: "Allow"
+  #         Principal:
+  #           AWS: "arn:aws:iam::840723909099:user/Diana"
+  #         Action: "es:*"
+  #         Resource: "arn:aws:es:us-east-1:846973539254:domain/test/*"
+    # Metadata:
+    #   'AWS::CloudFormation::Designer':
+    #     id: 89c42226-fd68-42e3-93df-1513b1ce6558
   photo:
     Type: 'AWS::S3::Bucket'
     Properties:
@@ -87,12 +98,12 @@ Resources:
         id: d939f2ee-9476-451a-a0a6-9aa7872b1947
     DependsOn:
       - Indexlf
-  S3BN9ZR:
-    Type: 'AWS::S3::Bucket'
-    Properties: {}
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: 7f9d2521-d19a-4412-bb2b-c1193420bdb6
-    DependsOn:
-      - A3lf2ApiGateway
+  # S3BN9ZR:
+  #   Type: 'AWS::S3::Bucket'
+  #   Properties: {}
+  #   Metadata:
+  #     'AWS::CloudFormation::Designer':
+  #       id: 7f9d2521-d19a-4412-bb2b-c1193420bdb6
+  #   DependsOn:
+  #     - A3lf2ApiGateway
   
