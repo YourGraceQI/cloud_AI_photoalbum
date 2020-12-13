@@ -82,7 +82,7 @@ Resources:
           Type: S3
           Properties:
             Bucket:
-              Ref: photo
+              Ref: photobucket
             Events: 's3:ObjectCreated:Put'
       Environment:
         Variables:
