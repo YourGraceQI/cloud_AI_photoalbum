@@ -3,7 +3,7 @@ import json
 import boto3
 import requests
 from elasticsearch import Elasticsearch, RequestsHttpConnection
-
+from requests_aws4auth import AWS4Auth
 
 def connectES(esEndPoint):
  print ('Connecting to the ES Endpoint {0}'.format(esEndPoint))
@@ -34,7 +34,7 @@ def createIndex(esClient):
 def getLabels(bucket,photo):
     client=boto3.client('rekognition')
     response = client.detect_labels(Image={'S3Object':{'Bucket':bucket,'Name':photo}},
-        MaxLabels=12)
+        MaxLabels=14)
 
     print('Detected labels for ' + photo)
     labels = []
@@ -55,13 +55,19 @@ def lambda_handler(event, context):
         "createdTimestamp":time,
         "labels":labels
     }
-    imgInfo = json.dumps(imgInfo)
-    headers = { "Content-Type": "application/json" }
-    endPoint = "search-photo-storage-3gex4uqz77gf2abn5bvis25ilm.us-east-1.es.amazonaws.com"
-    #r = requests.post(headers = headers,"https://search-photo-storage-3gex4uqz77gf2abn5bvis25ilm.us-east-1.es.amazonaws.com/post", data=imgInfo)
-    awsauth = AWS4Auth(credentials.access_key, credentials.secret_key, region, service, session_token=credentials.token)
 
+    imgInfo = json.dumps(imgInfo)
     
+    headers = { "Content-Type": "application/json" }
+    url = "https://search-photo-storage-3gex4uqz77gf2abn5bvis25ilm.us-east-1.es.amazonaws.com/photos/_doc"
+    region = 'us-east-1'
+    service = 'es'
+    creds = boto3.Session().get_credentials()
+    awsauth = AWS4Auth(creds.access_key, creds.secret_key, region, service, session_token=creds.token)
+    r = requests.post(url,  headers=headers, data=imgInfo)
+    print(r.text)
+  
+ 
     return {
         'statusCode': 200,
         'body': json.dumps('Hello from Lambda!')

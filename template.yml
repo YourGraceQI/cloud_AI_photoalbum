@@ -2,6 +2,17 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Python file including external library
 Resources:
+  photo:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: d939f2ee-9476-451a-a0a6-9aa7872b1947
   A3lf2ApiGateway:
     Type: 'AWS::Serverless::Api'
     Properties:
@@ -41,7 +52,7 @@ Resources:
       FunctionName: Searchlf
       CodeUri: ./src/search_photos #Directory the source file is
       MemorySize: 128
-      Timeout: 3
+      Timeout: 30
       Role: arn:aws:iam::840723909099:role/service-role/search-photos-role-1k677fab
       Policies:
         - AWSLambdaBasicExecutionRole-a49340ea-df22-4378-ad40-0127997c95f2
@@ -56,7 +67,7 @@ Resources:
       FunctionName: Indexlf
       CodeUri: ./src/index_photos
       MemorySize: 128
-      Timeout: 3
+      Timeout: 30
       Role: 'arn:aws:iam::840723909099:role/service-role/photoIndex-role-sz2l5aln'
       Policies:
         - AWSLambdaBasicExecutionRole-a49340ea-df22-4378-ad40-0127997c95f2
@@ -85,19 +96,28 @@ Resources:
     # Metadata:
     #   'AWS::CloudFormation::Designer':
     #     id: 89c42226-fd68-42e3-93df-1513b1ce6558
-  photo:
-    Type: 'AWS::S3::Bucket'
+  myES:
+    Type: 'AWS::Elasticsearch::Domain'
     Properties:
-      PublicAccessBlockConfiguration:
-        BlockPublicAcls: false
-        BlockPublicPolicy: false
-        IgnorePublicAcls: false
-        RestrictPublicBuckets: false
-    Metadata:
-      'AWS::CloudFormation::Designer':
-        id: d939f2ee-9476-451a-a0a6-9aa7872b1947
-    DependsOn:
-      - Indexlf
+        DomainName: "myES"
+        ElasticsearchClusterConfig:
+          DedicatedMasterEnabled: "false"
+          InstanceCount: "1"
+          InstanceType: "t2.small.elasticsearch"
+        EBSOptions:
+          EBSEnabled: true
+          Iops: 0
+          VolumeSize: 20
+          VolumeType: "gp2"
+        AccessPolicies:
+          Version: "2012-10-17"
+          Statement:
+            -
+              Effect: "Allow"
+              Principal:
+                AWS: "arn:aws:iam::840723909099:user/Diana"
+              Action: "es:*"
+              Resource: "arn:aws:es:us-east-1:840723909099:domain/testpip-ed4g9i-10k5rxz0gke5n"
   # S3BN9ZR:
   #   Type: 'AWS::S3::Bucket'
   #   Properties: {}

@@ -1,4 +1,6 @@
 requests
 requests_aws4auth
+Elasticsearch
+RequestsHttpConnection
 
 
