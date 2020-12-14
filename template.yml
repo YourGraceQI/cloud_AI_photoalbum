@@ -42,7 +42,7 @@ Resources:
         Type: "AWS::Lambda::Permission"
         DependsOn:
         - A3lf2ApiGateway
-      - Frontlexlf
+        - Frontlexlf
       Properties:
         Action: lambda:InvokeFunction
         FunctionName: !Ref Frontlexlf
