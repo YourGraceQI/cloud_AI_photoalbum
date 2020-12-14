@@ -38,15 +38,15 @@ Resources:
         - AmazonS3FullAccess
         - AlexaForBusinessFullAccess
         - AmazonLexFullAccess
-      ConfigLambdaPermission:
-        Type: "AWS::Lambda::Permission"
-        DependsOn:
-        - A3lf2ApiGateway
-        - Frontlexlf
-      Properties:
-        Action: lambda:InvokeFunction
-        FunctionName: !Ref Frontlexlf
-        Principal: apigateway.amazonaws.com
+      # ConfigLambdaPermission:
+      #   Type: "AWS::Lambda::Permission"
+      #   DependsOn:
+      #   - A3lf2ApiGateway
+      #   - Frontlexlf
+      # Properties:
+      #   Action: lambda:InvokeFunction
+      #   FunctionName: !Ref Frontlexlf
+      #   Principal: apigateway.amazonaws.com
       Events:
         HttpGet:
           Type: Api
