@@ -42,7 +42,7 @@ Resources:
         HttpGet:
           Type: Api
           Properties:
-            Path: /
+            Path: /search
             Method: get
             RestApiId:
               Ref: A3lf2ApiGateway
