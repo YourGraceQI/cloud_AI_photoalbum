@@ -23,7 +23,7 @@ Resources:
     Properties:
       StageName: vs
       OpenApiVersion: "2.0"
-      DefinitionUri: search_apigateway.yaml
+      DefinitionUri: test_v1_apigateway.yaml
   Frontlexlf:
     Type: AWS::Serverless::Function
     Properties:
