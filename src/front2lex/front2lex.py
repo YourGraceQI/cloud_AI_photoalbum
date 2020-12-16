@@ -15,6 +15,7 @@ def lambda_handler(event, context):
     
     print(response)
     print('search success')    
+    print('for test')
     
     return_message = response['message']
     print('return message is')
