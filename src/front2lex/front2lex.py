@@ -13,7 +13,8 @@ def lambda_handler(event, context):
         userId = '123',
         inputText = user_message)
     
-    print(response)    
+    print(response)
+    print('search success')    
     
     return_message = response['message']
     print('return message is')
